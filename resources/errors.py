@@ -22,7 +22,7 @@ class MovieNotExistsError(Exception):
     pass
 
 
-class UserNotExistsError(Exception):
+class EmailDoesnotExistError(Exception):
     pass
 
 
@@ -30,7 +30,19 @@ class EmailAlreadyExistsError(Exception):
     pass
 
 
+class PasswordIsTooShortError(Exception):
+    pass
+
+
 class UnauthorizedError(Exception):
+    pass
+
+
+class BadTokenError(Exception):
+    pass
+
+
+class ExpiredTokenError(Exception):
     pass
 
 
@@ -59,16 +71,28 @@ errors = {
         "message": "Movie with given id doesn't exist",
         "status": 400
     },
-    "UserNotExistsError": {
-        "message": "User with the given email doesn't exist",
+    "EmailDoesnotExistError": {
+        "message": "Couldn't find the user with given email address",
         "status": 400
     },
     "EmailAlreadyExistsError": {
         "message": "User with given email address already exists",
         "status": 400
     },
+    "PasswordIsTooShortError": {
+        "message": "Given password must have at least 6 characters",
+        "status": 400
+    },
     "UnauthorizedError": {
         "message": "Invalid username or password",
         "status": 401
+    },
+    "BadTokenError": {
+        "message": "Invalid token",
+        "status": 403
+    },
+    "ExpiredTokenError": {
+        "message": "Expired token",
+        "status": 403
     }
 }

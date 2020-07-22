@@ -13,8 +13,8 @@ class Movie(gj.Document):
 class User(db.Document):
     email = db.EmailField(required=True, unique=True)
     password = db.StringField(required=True, min_length=6)
-    movies = db.ListField(db.ReferenceField(
-        'Movie', reverse_delete_rule=db.PULL))
+    movies = db.ListField(db.ReferenceField('Movie',
+                                            reverse_delete_rule=db.PULL))
 
     def hash_password(self):
         self.password = generate_password_hash(self.password).decode('utf8')

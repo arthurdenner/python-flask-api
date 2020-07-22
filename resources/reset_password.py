@@ -1,10 +1,11 @@
+import datetime
+
 from flask import request, render_template
 from flask_jwt_extended import create_access_token, decode_token
 from flask_restful import Resource
 from jwt.exceptions import ExpiredSignatureError, DecodeError, InvalidTokenError
 from database.models import User
 from services.mail import send_email
-import datetime
 
 from mongoengine.errors import ValidationError
 from resources.errors import (SchemaValidationError, InternalServerError, PasswordIsTooShortError,

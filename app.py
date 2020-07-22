@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask
 from flask_restful import Api
 from flask_bcrypt import Bcrypt
@@ -12,7 +14,3 @@ api = Api(app, errors=errors)
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
 mail = Mail(app)
-
-app.config['MONGODB_SETTINGS'] = {
-    'host': 'mongodb://localhost/movie-bag'
-}

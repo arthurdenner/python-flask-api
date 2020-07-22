@@ -5,8 +5,8 @@ from flask_restful import Resource
 import datetime
 
 from mongoengine.errors import FieldDoesNotExist, NotUniqueError, DoesNotExist
-from resources.errors import (SchemaValidationError, EmailAlreadyExistsError,
-                              UnauthorizedError, InternalServerError)
+from resources.errors import (SchemaValidationError, EmailAlreadyExistsError, UnauthorizedError,
+                              InternalServerError, UserNotExistsError)
 
 
 class SignupApi(Resource):
@@ -38,7 +38,9 @@ class LoginApi(Resource):
             access_token = create_access_token(
                 identity=str(user.id), expires_delta=expires)
             return {'token': access_token}, 200
-        except (UnauthorizedError, DoesNotExist):
+        except UnauthorizedError:
             raise UnauthorizedError
+        except DoesNotExist:
+            raise UserNotExistsError
         except Exception:
             raise InternalServerError

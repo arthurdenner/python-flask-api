@@ -22,6 +22,10 @@ class MovieNotExistsError(Exception):
     pass
 
 
+class UserNotExistsError(Exception):
+    pass
+
+
 class EmailAlreadyExistsError(Exception):
     pass
 
@@ -52,7 +56,11 @@ errors = {
         "status": 403
     },
     "MovieNotExistsError": {
-        "message": "Movie with given id doesn't exists",
+        "message": "Movie with given id doesn't exist",
+        "status": 400
+    },
+    "UserNotExistsError": {
+        "message": "User with the given email doesn't exist",
         "status": 400
     },
     "EmailAlreadyExistsError": {

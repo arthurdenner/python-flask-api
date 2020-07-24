@@ -1,5 +1,6 @@
 from flask import Response, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
+from flask_jwt_extended.exceptions import NoAuthorizationError
 from flask_restful import Resource
 from database.models import Movie, User
 
